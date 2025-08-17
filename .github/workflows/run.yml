@@ -28,7 +28,7 @@ jobs:
         python src/main.py --config RUN_CONFIG.json
 
     - name: Upload results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: model-results
         path: outputs/
