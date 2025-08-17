@@ -1,34 +1,28 @@
-name: Run NSE Multibagger Model
+name: Run NSE Multibagger
 
 on:
-  workflow_dispatch:   # allows manual trigger
-  schedule:
-    - cron: "0 6 * * 1-5"   # runs every weekday at 11:30 AM IST (6 AM UTC)
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Run NSE Multibagger
-      run: |
-        python src/main.py --config RUN_CONFIG.json
-
-    - name: Upload results
-      uses: actions/upload-artifact@v4
-      with:
-        name: model-results
-        path: outputs/
+      - name: Run NSE Multibagger
+        run: python -m src.main --config RUN_CONFIG.json
