@@ -1,0 +1,34 @@
+{
+  "asof_date_ist": null,
+  "universe": {
+    "min_price_history_years": 3,
+    "exclude_reits_invits_etfs": true,
+    "source_symbol_list": "symbols/nse_universe.csv"
+  },
+  "data": {
+    "prices": {
+      "provider": "yfinance",
+      "lookback_years": 10
+    },
+    "fundamentals": {
+      "providers": [],
+      "fields": []
+    }
+  },
+  "features": {
+    "winsorize_pct": [
+      1,
+      99
+    ]
+  },
+  "model": {
+    "type": "system_gmm"
+  },
+  "penalties": {
+    "inv_dummy_alpha_pct": 15
+  },
+  "outputs": {
+    "top_n": 50
+  },
+  "random_seed": 42
+}
