@@ -5,7 +5,7 @@ from src.model import estimate_system_gmm, predict_and_score
 import numpy as np
 
 def main():
-    cfg = load_config('../RUN_CONFIG.json')
+    cfg = load_config('RUN_CONFIG.json')
     ensure_outputs()
     universe = read_universe('../symbols/nse_universe.csv')
     print('Universe', len(universe))
